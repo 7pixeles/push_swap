@@ -11,18 +11,41 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/* 
-parse(char *arg_int)
+
+int	is_valid_arg(char *argv)
+{
+	int i;
+
+	i = 0;
+	while (argv[i] != '\0')
+	{
+		if (ft_isdigit(argv[i]) != 1)
+			return (0);
+		else if(argv[i] == '+' || argv[i] == '-')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+char *parse_arg(char *argv)
 {
 
-} */
+	if (is_valid_arg(argv[i] != 0))
+	{
+		return ();
+	}
+	return 
+}
 
 int main(int argc, char *argv[])
 {
 	int i;
-	int j;
-	char **num;
+	int j; 
+	int flag;
 
+	flag = 1;
+	char **arg; //argumento en split
 	if (argc < 2)
 	{
 		ft_printf("Error\n");
@@ -32,17 +55,24 @@ int main(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		num = ft_split(argv[i], ' ');
+		arg = ft_split(argv[i], ' ');
 		j = 0;
-		while (num[j])
+		while (arg[j])
 		{
-			ft_printf("%s\n", num[j]);
-			free(num[j]);
+			flag = parse(arg[j], flag);
+			if (flag == 1)
+			{
+				ft_printf("%s\n", arg[j]);
+			}
+			else 
+			{
+		
+				exit(1);
+			}
+			free(arg[j]);
 			j++;
 		}
 		i++;
-		free(num);
+		free(arg);
 	}
 }
-
-// **argv -> arg[str[1], str[2], ...]

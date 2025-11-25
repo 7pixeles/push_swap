@@ -13,6 +13,7 @@
 NAME	= push_swap
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra -MMD -MP
+SANITIZE = -g3 -fsanitize=address
 
 LIBFT_PATH	= ./lib/libft
 
@@ -33,11 +34,11 @@ $(LIBFT):
 
 # ---------- OBJ FILES ----------
 %.o: %.c
-	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+	$(CC) $(CFLAGS) $(SANITIZE) $(HEADERS) -c $< -o $@
 
 # ---------- MAKE ----------
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
+	$(CC) $(CFLAGS) $(SANITIZE) $(OBJS) $(LIBS) -o $(NAME)
 
 # ---------- CLEAN ----------
 clean:
