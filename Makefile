@@ -3,50 +3,78 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/01 12:30:15 by ayucarre          #+#    #+#              #
-#    Updated: 2025/11/20 11:28:43 by ayucarre         ###   ########.fr        #
+#    Updated: 2025/11/29 11:21:40 by ayua             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# ===========================
+#          COLORS
+# ===========================
+RESET   = \033[0m
+GREEN   = \033[32m
+YELLOW  = \033[33m
+BLUE    = \033[34m
+
+OK      = $(GREEN)[OK]$(RESET)
+BUILD   = $(BLUE)[BUILD]$(RESET)
+CLEAN   = $(YELLOW)[CLEAN]$(RESET)
+
+# ===========================
+#        PROJECT CONFIG
+# ===========================
 NAME	= push_swap
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra -MMD -MP
 SANITIZE = -g3 -fsanitize=address
 
 LIBFT_PATH	= ./lib/libft
-
 HEADERS	= -I $(LIBFT_PATH)
 LIBFT	= $(LIBFT_PATH)/libft.a
-
 LIBS	= $(LIBFT)
 
-SRCS	= srcs/push_swap.c
-OBJS	= $(SRCS:.c=.o)
+# ===========================
+#     AUTO SRC + OBJ SETUP
+# ===========================
+SRCS_DIR	= srcs
+OBJ_DIR		= obj
+SRCS	= $(wildcard $(SRCS_DIR)/*.c)
+OBJS	= $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEPS	= $(OBJS:.o=.d)
 
+# ===========================
+#          TARGETS
+# ===========================
 all:	$(NAME)
 
 # ---------- LIBFT ----------
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_PATH)
+	@echo "$(OK) $(GREEN)libft compiled.$(RESET)"
 
 # ---------- OBJ FILES ----------
-%.o: %.c
-	$(CC) $(CFLAGS) $(SANITIZE) $(HEADERS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(SANITIZE) $(HEADERS) -c $< -o $@
+	@echo "$(BUILD) $<"
 
 # ---------- MAKE ----------
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(SANITIZE) $(OBJS) $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SANITIZE) $(OBJS) $(LIBS) -o $(NAME)
+	@echo "$(OK) $(GREEN)$(NAME) compiled.$(RESET)"
 
 # ---------- CLEAN ----------
 clean:
 	rm -rf $(OBJS) $(DEPS)
+	@rm -rf $(OBJ_DIR)
+	@echo "$(CLEAN) $(YELLOW)objects $(NAME) removed.$(RESET)"
 
 fclean:	clean
 	rm -rf $(NAME) $(DEPS)
 	$(MAKE) -C $(LIBFT_PATH) fclean
+	@echo "$(CLEAN) $(YELLOW)$(NAME) removed.$(RESET)"
 
 re:		fclean all
 

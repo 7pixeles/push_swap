@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 16:46:38 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/11/07 18:39:16 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/11/26 19:32:33 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 # include <stdint.h>
 # include <limits.h>
 

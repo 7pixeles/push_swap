@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 13:00:42 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/10/16 12:52:07 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/11/26 19:07:49 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,10 @@ static char	**get_words(char **array, char const *s, char c)
 	return (array);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**array;
-	size_t	i;
-	size_t	j;
 
-	i = 0;
-	j = 0;
 	if (s == NULL)
 		return (NULL);
 	array = (char **)malloc((count_word(s, c) + 1) * sizeof(char *));
