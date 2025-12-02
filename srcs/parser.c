@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ayucarre <ayucarre@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 17:17:02 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/11/28 13:37:48 by ayua             ###   ########.fr       */
+/*   Created: 2025-12-02 09:40:20 by ayucarre          #+#    #+#             */
+/*   Updated: 2025-12-02 09:40:20 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	add_to_stack(t_list **stack_a, long int nbr)
 {
-	t_list *aux_stack;
-	t_list *t_list_new;
-	int *value;
+	t_list	*aux_stack;
+	t_list	*t_list_new;
+	int		*value;
 
 	value = malloc(sizeof(int));
 	if (!value)
@@ -28,10 +28,10 @@ void	add_to_stack(t_list **stack_a, long int nbr)
 	{
 		if (*(int *)t_list_new->content == *(int *)aux_stack->content)
 		{
-			ft_printf("Error: duplicate value\n");
+			ft_printf("Duplicate value: %d\n", *(int *)aux_stack->content);
 			free(value);
-			free (t_list_new);
-			return;
+			free(t_list_new);
+			exit(1);
 		}
 		aux_stack = aux_stack->next;
 	}
@@ -40,11 +40,11 @@ void	add_to_stack(t_list **stack_a, long int nbr)
 
 void	parser(char *argv[], t_list **stack_a)
 {
-	int	i;
-	int j;
-	char **split_arg;
-	long int nbr;
-	
+	int			i;
+	int			j;
+	char		**split_arg;
+	long int	nbr;
+
 	i = 1;
 	while (argv[i])
 	{

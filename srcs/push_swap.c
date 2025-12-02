@@ -25,4 +25,5 @@ int	main(int argc, char *argv[])
 	parser(argv, &stack_a);
 	print_stack(stack_a);
 	ft_lstclear(&stack_a, del);
+	return (0);
 }
