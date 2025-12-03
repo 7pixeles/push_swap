@@ -50,12 +50,12 @@ long int	ft_long_atoi(char *nptr)
 			exit(1);
 		}
 		n = 10 * n + (nptr[i] - '0');
+		if ((n * sign) < INT_MIN || (n * sign) > INT_MAX)
+		{
+			ft_printf("Error\n");
+			exit(1);
+		}
 		i++;
-	}
-	if ((n * sign) < INT_MIN || (n * sign) > INT_MAX)
-	{
-		ft_printf("Error\n");
-		exit(1);
 	}
 	return (n * sign);
 }

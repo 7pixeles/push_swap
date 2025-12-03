@@ -50,7 +50,10 @@ void	parser(char *argv[], t_list **stack_a)
 	{
 		split_arg = ft_split(argv[i], ' ');
 		if (split_arg[0] == NULL)
+		{
+			ft_printf("Error\n");
 			exit(1);
+		}
 		j = 0;
 		while (split_arg[j])
 		{
