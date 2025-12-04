@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+/// @brief Free complete split
+/// @param s Double pointer to string char
 void	free_split(char **s)
 {
 	int	i;
@@ -27,6 +29,8 @@ void	free_split(char **s)
 	free(s);
 }
 
+/// @brief Print one stack
+/// @param stack Pointer to stack
 void	print_stack(t_list *stack)
 {
 	t_list	*tmp;
@@ -39,6 +43,9 @@ void	print_stack(t_list *stack)
 	}
 }
 
+/// @brief Print both stack with vertical alignment
+/// @param stack_a Pointer to stack A
+/// @param stack_b Pointer to stack B
 void	print_stacks(t_list *stack_a, t_list *stack_b)
 {
 	ft_printf("[Stack A]\n");
@@ -49,22 +56,23 @@ void	print_stacks(t_list *stack_a, t_list *stack_b)
 	print_stack(stack_b);
 }
 
-/* -- ELIMINAR ANTES DE ENTREGAR -- */
+/// @brief Print both stack with horizontal alignment
+/// @param stack_a Pointer to stack A
+/// @param stack_b Pointer to stack B
 void	pretty_stack(t_list *stack_a, t_list *stack_b)
 {
-	t_list *tmp_a = stack_a;
-	t_list *tmp_b = stack_b;
-	
+	t_list	*tmp_a = stack_a;
+	t_list	*tmp_b = stack_b;
+
 	printf("[Stack A] [Stack B]\n");
 	while (tmp_a || tmp_b)
 	{
 		if (tmp_a && tmp_b)
 		{
-			printf("%5d %10d\n", *(int *)tmp_a->content, *(int *)tmp_b->content);
+			printf("%5d%10d\n", *(int *)tmp_a->content, *(int *)tmp_b->content);
 			tmp_a = tmp_a->next;
 			tmp_b = tmp_b->next;
 		}
-		
 		else if (tmp_a)
 		{
 			printf("%5d\n", *(int *)tmp_a->content);
@@ -78,6 +86,8 @@ void	pretty_stack(t_list *stack_a, t_list *stack_b)
 	}
 }
 
+/// @brief Delete function to use in lstclear
+/// @param content Pointer to content list
 void	del(void *content)
 {
 	free(content);

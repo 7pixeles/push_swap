@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayucarre <ayucarre@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-04 14:24:12 by ayucarre          #+#    #+#             */
-/*   Updated: 2025-12-04 14:24:12 by ayucarre         ###   ########.fr       */
+/*   Created: 2025-12-04 16:35:50 by ayucarre          #+#    #+#             */
+/*   Updated: 2025-12-04 16:35:50 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+void	sort_3_nmb(t_list **stack)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 2)
-		return (0);
-	parser(argv, &stack_a);
-	//HACE COSAS
-	push_pa(&stack_b, &stack_a);
-	reverse_rra(&stack_a);
-	reverse_rrr(&stack_a, &stack_b);
-	pretty_stack(stack_a, stack_b);
-	//LIMPIA COSAS - NO BORRAR. B NO HARIA FALTA
-	ft_lstclear(&stack_a, del);
-	ft_lstclear(&stack_b, del);
-	return (0);
+	while ((*stack)->next != NULL)
+	{
+		if ((*stack)->content > (*stack)->next)
+			swap_sa(stack);
+		*stack = (*stack)->next;
+	}
+	
+	
 }

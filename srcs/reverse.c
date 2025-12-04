@@ -12,33 +12,48 @@
 
 #include "push_swap.h"
 
-/* static void	reverse(t_list **stack)
+static int	reverse(t_list **stack)
 {
-	t_list *first;
-	t_list *last;
+	t_list	*first;
+	t_list	*last;
+	int		size;
+	int		i;
 
+	i = 0;
+	size = ft_lstsize(*stack); // Size = 4
 	if (*stack == NULL || (*stack)->next == NULL)
-		return;
-
-	
+		return (0);
+	first = ft_lstlast(*stack); // Encontramos el último nodo // D
+	last = *stack; // COPIA DE STACK ABCD
+	while (i < (size - 2)) // i = 0, 1 , 2 , 3
+	{
+		last = last->next; // Iterador
+		i++;
+	}
+	last->next = NULL; // C-> NULL
+	first->next = *stack;// Movemos el último nodo al principio // D -> A
+	*stack = first; //stack empieza en D
+	return (1);
 }
 
 void	reverse_rra(t_list **stack_a)
 {
-	reverse(stack_a);
-	write(1, "rra\n", 4);
+	if (reverse(stack_a))
+		write(1, "rra\n", 4);
 }
 
 void	reverse_rrb(t_list **stack_b)
 {
-	reverse(stack_b);
-	write(1, "rrb\n", 4);
+	if (reverse(stack_b))
+		write(1, "rrb\n", 4);
 }
 
 void	reverse_rrr(t_list **stack_a, t_list **stack_b)
 {
-	reverse(stack_a);
-	reverse(stack_b);
-	write(1, "rrr\n", 4);
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return ;
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
+		return ;
+	if (reverse(stack_a) && reverse(stack_b))
+		write(1, "rrr\n", 4);
 }
- */
