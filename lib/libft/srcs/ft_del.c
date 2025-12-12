@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_3.c                                           :+:      :+:    :+:   */
+/*   ft_del.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayucarre <ayucarre@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-04 16:35:50 by ayucarre          #+#    #+#             */
-/*   Updated: 2025-12-04 16:35:50 by ayucarre         ###   ########.fr       */
+/*   Created: 2025-12-11 11:34:24 by ayucarre          #+#    #+#             */
+/*   Updated: 2025-12-11 11:34:24 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sort_3_nmb(t_list **stack)
+void	del(void *content)
 {
-	while ((*stack)->next != NULL)
-	{
-		if ((*stack)->content > (*stack)->next)
-			swap_sa(stack);
-		*stack = (*stack)->next;
-	}
-	
-	
+	free(content);
 }

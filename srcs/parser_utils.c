@@ -1,16 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayucarre <ayucarre@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-02 09:40:20 by ayucarre          #+#    #+#             */
-/*   Updated: 2025-12-02 09:40:20 by ayucarre         ###   ########.fr       */
+/*   Created: 2025-12-02 09:40:37 by ayucarre          #+#    #+#             */
+/*   Updated: 2025-12-02 09:40:37 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+long	ft_atol(const char	*nptr, int *error)
+{
+	int	i;
+	long	n;
+	long	sign;
+	
+	sign = 1;
+	i = 0;
+	n = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		n = 10 * n + (nptr[i] - '0');
+		if ((n * sign) < INT_MIN || (n * sign) > INT_MAX)
+			exit(1);
+		i++;
+	}
+	return (n * sign);
+}
 
 int	is_valid_num(char *nptr)
 {
@@ -56,46 +83,4 @@ int is_duplicate_num(t_list **stack_a, long nbr)
 	}
 	// TODO En código final este iría fuera:
 	return (ft_lstadd_back(stack_a, t_list_new), 1);
-}
-
-char **split_arg(char *argv[])
-{
-	int i;
-	char **split_arg;
-
-	i = 1;
-	while (argv[i])
-	{
-		split_arg = ft_split(argv[i], ' ');
-		if (!split_arg)
-			return (0);
-		if (split_arg[0] == NULL)
-		return (0); i++;
-	}
-	return (split_arg); 
-}
-
-int parser(char *argv[], t_list **stack_a) 
-{
-	int i;
-	char **arg;
-	long int nbr;
-
-	i = 0; 
-	arg = split_arg(argv);
-	if (!arg) 
-		return (free_split(arg), 0);
-	while (arg[i])
-	{
-		nbr = ft_atol(arg[i]); 
-		if (!nbr)
-			return (free_split(arg), 0);
-		if (!is_valid_num(arg[i]))
-			return (free_split(arg), 0);
-		if (!is_duplicate_num(stack_a, nbr))
-			return (free_split(arg), 0);
-		i++; 
-	}
-	free_split (arg); 
-	return (1); 
 }

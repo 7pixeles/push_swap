@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+// TODO EN código final, sustituir errores por code exit
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
@@ -20,14 +21,19 @@ int	main(int argc, char *argv[])
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-		return (0);
-	parser(argv, &stack_a);
-	//HACE COSAS
-	push_pa(&stack_b, &stack_a);
-	reverse_rra(&stack_a);
-	reverse_rrr(&stack_a, &stack_b);
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+	if (!parser(argv, &stack_a))
+	{
+		ft_lstclear(&stack_a, del);
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 	pretty_stack(stack_a, stack_b);
-	//LIMPIA COSAS - NO BORRAR. B NO HARIA FALTA
+
+	// TODO Sustituir por code exit
 	ft_lstclear(&stack_a, del);
 	ft_lstclear(&stack_b, del);
 	return (0);

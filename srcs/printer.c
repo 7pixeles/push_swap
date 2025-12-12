@@ -1,36 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   printer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayucarre <ayucarre@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-02 09:40:37 by ayucarre          #+#    #+#             */
-/*   Updated: 2025-12-02 09:40:37 by ayucarre         ###   ########.fr       */
+/*   Created: 2025-12-11 12:07:16 by ayucarre          #+#    #+#             */
+/*   Updated: 2025-12-11 12:07:16 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/// @brief Free complete split
-/// @param s Double pointer to string char
-void	free_split(char **s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		exit(1);
-	while (s[i])
-	{
-		free(s[i]);
-		i++;
-	}
-	free(s);
-}
-
-/// @brief Print one stack
-/// @param stack Pointer to stack
 void	print_stack(t_list *stack)
 {
 	t_list	*tmp;
@@ -43,9 +24,6 @@ void	print_stack(t_list *stack)
 	}
 }
 
-/// @brief Print both stack with vertical alignment
-/// @param stack_a Pointer to stack A
-/// @param stack_b Pointer to stack B
 void	print_stacks(t_list *stack_a, t_list *stack_b)
 {
 	ft_printf("[Stack A]\n");
@@ -56,9 +34,6 @@ void	print_stacks(t_list *stack_a, t_list *stack_b)
 	print_stack(stack_b);
 }
 
-/// @brief Print both stack with horizontal alignment
-/// @param stack_a Pointer to stack A
-/// @param stack_b Pointer to stack B
 void	pretty_stack(t_list *stack_a, t_list *stack_b)
 {
 	t_list	*tmp_a = stack_a;
@@ -84,11 +59,4 @@ void	pretty_stack(t_list *stack_a, t_list *stack_b)
 			tmp_b = tmp_b->next;
 		}
 	}
-}
-
-/// @brief Delete function to use in lstclear
-/// @param content Pointer to content list
-void	del(void *content)
-{
-	free(content);
 }

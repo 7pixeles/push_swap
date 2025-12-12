@@ -12,9 +12,6 @@
 
 #include "libft.h"
 
-/// @brief 
-/// @param nptr 
-/// @return 
 int	ft_atoi(const char	*nptr)
 {
 	int	i;
