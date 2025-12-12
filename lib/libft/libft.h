@@ -43,7 +43,7 @@ void	del(void *content);
 
 //Standard library
 int			ft_atoi(const char	*nptr);
-//long		ft_atol(const char	*nptr);
+long		ft_atol(const char	*nptr);
 void		*ft_calloc(size_t nmemb, size_t size);
 
 //String Library

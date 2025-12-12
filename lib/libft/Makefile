@@ -84,7 +84,7 @@ SRC			=	ft_atoi.c \
 				ft_lstdelone.c \
 				ft_putendl_fd.c \
 				ft_strlen.c \
-				#ft_atol.c \#
+				ft_atol.c \
 				ft_del.c
 
 SRCS		= $(addprefix $(SRC_DIR)/, $(SRC))
