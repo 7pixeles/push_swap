@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/11/28 16:39:02 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/13 14:24:06 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,47 @@ typedef struct	s_stack
 	t_node		*bottom;
 }				t_stack;
 
+/*
+* ····· STACK INITIALIZATION AND CLEARING FUNCTIONS
+*/
+
+/*
+* 	new_node -> returns a new node with value sent as param
+*/
+t_node	*new_node(int value);
+
+/*
+* 	init_stack -> initializes stack with name sent as param
+*/
+void	init_stack(t_stack *stack, char name);
+
+/*
+* 	clear_stack -> clear from top till last node, then sets defaults values
+*/
+void	clear_stack(t_stack *stack);
+
+
+/*
+* ····· STACK BASIC MOVEMENTS
+*/
+/*
+* 	push_top -> Adds an existing node to the top of a stack, updating the size
+*/
+void push_top(t_stack *stack, t_node *node);
+/*
+* 	push_bottom -> Adds an existing node to the bottom of a stack, updating the size
+*/
+void push_bottom(t_stack *stack, t_node *node);
+/*
+* 	pop_top -> Extracts the top node of a stack , updating the size
+*/
+t_node *pop_top(t_stack *stack);
+/*
+* 	pop_bottom -> Extracts the bottom node of a stack , updating the size
+*/
+t_node *pop_bottom(t_stack *stack);
+
+
 /*--- printer.c ---*/
 // TODO En código final, eliminar el pretty stack, tiene función prohibida
 void		print_stack(t_list *stack);
@@ -45,32 +86,18 @@ void		print_stacks(t_list *stack_a, t_list *stack_b);
 void		pretty_stack(t_list *stack_a, t_list *stack_b);
 
 /* ---- exit.c */
-void	exit_code(t_list *a, t_list *b, int code);
+void	exit_code(t_stack *a, t_stack *b, int code);
 
 /*---- stack_utils.c ----*/
-int		add_to_stack(t_list **stack_a, t_list **t_list_new, long nbr);
 int 	is_duplicate_num(t_list **stack_a, long nbr);
-/*--------SWAP-----------*/
-void		swap_sa(t_list **stack_a);
-void		swap_sb(t_list **stack_b);
-void		swap_ss(t_list **stack_a, t_list **stack_b);
-/*--------PUSH-----------*/
-void		push_pa(t_list **stack_b, t_list **stack_a);
-void		push_pb(t_list **stack_a, t_list **stack_b);
-/*--------ROTATE---------*/
-void		rotate_ra(t_list **stack_a);
-void		rotate_rb(t_list **stack_b);
-void		rotate_rr(t_list **stack_a, t_list **stack_b);
-/*----REVERSE ROTATE-----*/
-void		reverse_rra(t_list **stack_a);
-void		reverse_rrb(t_list **stack_b);
-void		reverse_rrr(t_list **stack_a, t_list **stack_b);
+
 
 /*----PARSER--------------*/
-
+long int	ft_atol_ps(const char	*nptr, int *error_code);
+int			is_valid_num(char *nptr);
+int			is_duplicate_num(t_list **stack_a, long nbr);
 void		free_split(char **s);
 int			parser(char *argv[], t_list **stack_a);
-int			is_valid_num(char *nptr);
 
 
 /*-----SORTING------------*/

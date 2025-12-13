@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayucarre <ayucarre@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-11 10:42:25 by ayucarre          #+#    #+#             */
-/*   Updated: 2025-12-11 10:42:25 by ayucarre         ###   ########.fr       */
+/*   Created: 2025/12/11 10:42:25 by ayucarre          #+#    #+#             */
+/*   Updated: 2025/12/13 14:22:20 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	free_split(char **s)
 	free(s);
 }
 
-void	exit_code(t_list *a, t_list *b, int code)
+void	exit_code(t_stack *a, t_stack *b, int code)
 {
 	if (a)
-		ft_lstclear(&a, del);
+		clear_stack(a);
 	if (b)
-		ft_lstclear(&b, del);
+		clear_stack(b);
 	if (code == ERROR_ARGS || code == ERROR_PARSING
 		|| code == STDIN_READ_ERROR)
 		write(2, "Error\n", 6);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayucarre <ayucarre@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-11 15:24:05 by ayucarre          #+#    #+#             */
-/*   Updated: 2025-12-11 15:24:05 by ayucarre         ###   ########.fr       */
+/*   Created: 2025/12/11 15:24:05 by ayucarre          #+#    #+#             */
+/*   Updated: 2025/12/13 12:10:55 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 long	ft_atol(const char	*nptr)
 {
-	int	i;
+	int		i;
 	long	n;
 	long	sign;
-	
+
 	sign = 1;
 	i = 0;
 	n = 0;
