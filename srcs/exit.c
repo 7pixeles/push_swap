@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 10:42:25 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/18 00:23:45 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/18 09:53:22 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ void	free_split(char **split)
 	{
 		free(split[idx]);
 		idx++;
+	}
+	free(split);
+}
+
+void	free_partial_split(char **split, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		free (split[i]);
+		i++;
 	}
 	free(split);
 }

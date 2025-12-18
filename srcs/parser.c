@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 09:40:20 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/18 01:08:36 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/18 10:12:44 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,57 +85,66 @@ int	count_args(char *argv[], int *error_code)
 	}
 	return (token_count);
 }
-char **flatten_args(char *argv[], int *error_code)
+
+int	copy_tokens(char **dest, int *i_dest, char **tokens)
+{
+	int	i;
+
+	i = 0;
+	while (tokens[i])
+	{
+		dest[*i_dest] = ft_strdup(tokens[i]);
+		if (!dest[*i_dest])
+			return (0);
+		(*i_dest)++;
+		i++;
+	}
+}
+char	**flatten_args(char *argv[], int *error_code)
 {
 	int		i_args;
-	int		i_token;
-	int		i_write;
-	char	**split_tokens;
+	int		i_flat;
+	char	**tokens;
 	char	**flat_args;
 
 	i_args = 1;
+	i_flat = 0;
 	*error_code = 0;
-	i_write = 0;
-	flat_args = malloc((count_args(argv, &error_code) + 1) * sizeof(char *));
+	flat_args = malloc((count_args(argv, error_code) + 1) * sizeof(char *));
 	if (!flat_args)
-	return (NULL);
+		return (*error_code = 1, NULL);
 	while (argv[i_args])
 	{
-		split_tokens = ft_split(argv[i_args], ' ');
-		if (!split_tokens)
-			return (free (flat_args), *error_code = 1, 0);
-		if (split_tokens[0] == NULL)
-			return (free_split(split_tokens), free (flat_args), *error_code = 1, 0);
-		i_token = 0;
-		while (split_tokens[i_token])
+		tokens = ft_split(argv[i_args], ' ');
+		if (!tokens || !tokens[0] || !copy_tokens(flat_args, &i_flat, tokens))
 		{
-			flat_args[i_write] = ft_strdup(split_tokens[i_token]);
-			i_write++;
-			i_token++;
+			free_split(tokens);
+			free_partial_split(flat_args, i_flat);
+			return (*error_code = 1, NULL);
 		}
+		free_split(tokens);
 		i_args++;
-		free_split(split_tokens);
 	}
-	flat_args[i_write] = NULL;
+	flat_args[i_flat] = NULL;
 	return (flat_args);
 }
 
-int parser(char *argv[], t_list **stack_a) 
+int	parser(char *argv[], t_list **stack_a) 
 {
 	int i;
 	char **arg;
 	long int nbr;
-	int code_error;
+	int error_code;
 	
-	code_error = 0;
+	error_code = 0;
 	i = 0; 
-	arg = split_arg(argv);
+	arg = flatten_args(argv, error_code);
 	if (!arg) 
 		return (free_split(arg), 0);
 	while (arg[i])
 	{
-		nbr = ft_atol_ps(arg[i], &code_error); 
-		if (code_error)
+		nbr = ft_atol_ps(arg[i], &error_code); 
+		if (error_code)
 			return (free_split(arg), 0);
 		if (!is_valid_num(arg[i]))
 			return (free_split(arg), 0);
