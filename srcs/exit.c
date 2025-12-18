@@ -6,25 +6,25 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 10:42:25 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/13 14:22:20 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/18 00:23:45 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_split(char **s)
+void	free_split(char **split)
 {
-	int	i;
+	int	idx;
 
-	i = 0;
-	if (!s)
+	idx = 0;
+	if (!split)
 		return ;
-	while (s[i])
+	while (split[idx])
 	{
-		free(s[i]);
-		i++;
+		free(split[idx]);
+		idx++;
 	}
-	free(s);
+	free(split);
 }
 
 void	exit_code(t_stack *a, t_stack *b, int code)

@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 09:40:20 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/13 14:15:12 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/18 01:08:36 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,49 +59,65 @@ int	is_valid_num(char *nptr)
 	return (1);
 }
 
-// TODO Modificar para encajar con la nueva estructura de nodos
-int	is_duplicate_num(t_list **stack_a, long nbr)
+int	count_args(char *argv[], int *error_code)
 {
-	t_list	*aux_stack;
-	t_list	*t_list_new;
-	aux_stack = *stack_a;
-	int		*value;
-
-	value = malloc(sizeof(int));
-	if (!value)
-		return (0);
-	*value = (int)nbr;
-	t_list_new = ft_lstnew(value);
-	while (aux_stack != NULL)
+	int	i_arg;
+	int i_token;
+	int token_count;
+	char **split_tokens;
+	
+	*error_code = 0;
+	i_arg = 1;
+	token_count = 0;
+	while (argv[i_arg])
 	{
-		if (*(int *)aux_stack->content == *(int *)t_list_new->content)
-		{
-			free(value);
-			free(t_list_new);
-			return (0);
-		}
-		aux_stack = aux_stack->next;
+		split_tokens = ft_split(argv[i_arg], ' ');
+		if (!split_tokens)
+			return (*error_code = 1, 0);
+		if (split_tokens[0] == NULL)
+			return (free_split(split_tokens), *error_code = 1, 0);	
+		i_token = 0;
+		while (split_tokens[i_token])
+			i_token++;
+		token_count += i_token;
+		i_arg++;
+		free_split(split_tokens);
 	}
-	// TODO En código final este iría fuera:
-	return (ft_lstadd_back(stack_a, t_list_new), 1);
+	return (token_count);
 }
-
-char **split_arg(char *argv[])
+char **flatten_args(char *argv[], int *error_code)
 {
-	int i;
-	char **split_arg;
+	int		i_args;
+	int		i_token;
+	int		i_write;
+	char	**split_tokens;
+	char	**flat_args;
 
-	i = 1;
-	while (argv[i])
+	i_args = 1;
+	*error_code = 0;
+	i_write = 0;
+	flat_args = malloc((count_args(argv, &error_code) + 1) * sizeof(char *));
+	if (!flat_args)
+	return (NULL);
+	while (argv[i_args])
 	{
-		split_arg = ft_split(argv[i], ' ');
-		if (!split_arg)
-			return (0);
-		if (split_arg[0] == NULL)
-			return (0);
-		i++;
+		split_tokens = ft_split(argv[i_args], ' ');
+		if (!split_tokens)
+			return (free (flat_args), *error_code = 1, 0);
+		if (split_tokens[0] == NULL)
+			return (free_split(split_tokens), free (flat_args), *error_code = 1, 0);
+		i_token = 0;
+		while (split_tokens[i_token])
+		{
+			flat_args[i_write] = ft_strdup(split_tokens[i_token]);
+			i_write++;
+			i_token++;
+		}
+		i_args++;
+		free_split(split_tokens);
 	}
-	return (split_arg); 
+	flat_args[i_write] = NULL;
+	return (flat_args);
 }
 
 int parser(char *argv[], t_list **stack_a) 

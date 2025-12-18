@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/13 14:24:06 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/18 00:32:49 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int 	is_duplicate_num(t_list **stack_a, long nbr);
 long int	ft_atol_ps(const char	*nptr, int *error_code);
 int			is_valid_num(char *nptr);
 int			is_duplicate_num(t_list **stack_a, long nbr);
-void		free_split(char **s);
+void		free_split(char **split);
 int			parser(char *argv[], t_list **stack_a);
 
 
