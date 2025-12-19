@@ -22,7 +22,7 @@
 # define ERROR_ARGS 5
 # define STDIN_READ_ERROR 6
 
-typedef struct		s_node
+typedef struct s_node
 {
 	int				value;
 	int				index;
@@ -30,7 +30,7 @@ typedef struct		s_node
 	struct s_node	*prev;
 }					t_node;
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	int			size;
 	char		name;
@@ -43,9 +43,9 @@ typedef struct	s_stack
 */
 
 /*
-* 	new_node -> returns a new node with value sent as param
+* 	init_node -> returns a new node with value sent as param
 */
-t_node	*new_node(int value);
+t_node	*init_node(int value);
 
 /*
 * 	init_stack -> initializes stack with name sent as param
@@ -57,54 +57,50 @@ void	init_stack(t_stack *stack, char name);
 */
 void	clear_stack(t_stack *stack);
 
-
 /*
 * ····· STACK BASIC MOVEMENTS
 */
 /*
 * 	push_top -> Adds an existing node to the top of a stack, updating the size
 */
-void push_top(t_stack *stack, t_node *node);
+void	push_top(t_stack *stack, t_node *node);
 /*
-* 	push_bottom -> Adds an existing node to the bottom of a stack, updating the size
+*	push_bottom -> Adds an existing node to the bottom of a stack,
+					updating the size
 */
-void push_bottom(t_stack *stack, t_node *node);
+
+void	push_bottom(t_stack *stack, t_node *node);
 /*
 * 	pop_top -> Extracts the top node of a stack , updating the size
 */
-t_node *pop_top(t_stack *stack);
+t_node	*pop_top(t_stack *stack);
 /*
 * 	pop_bottom -> Extracts the bottom node of a stack , updating the size
 */
-t_node *pop_bottom(t_stack *stack);
+t_node	*pop_bottom(t_stack *stack);
 
 
 /*--- printer.c ---*/
-// TODO En código final, eliminar el pretty stack, tiene función prohibida
-void		print_stack(t_list *stack);
-void		print_stacks(t_list *stack_a, t_list *stack_b);
-void		pretty_stack(t_list *stack_a, t_list *stack_b);
+void	print_stack(t_stack *stack);
+// TODO En código final, eliminar el pretty stack, tiene función prohibida 
+void	pretty_stack(t_stack *stack_a, t_stack *stack_b);
 
 /* ---- exit.c */
 void	exit_code(t_stack *a, t_stack *b, int code);
+void	exit_code(t_stack *a, t_stack *b, int code);
 
-/*---- stack_utils.c ----*/
-int 	is_duplicate_num(t_list **stack_a, long nbr);
-
+/*--- PARSER UTILS -------*/
+int			ft_atol_ps(const char *nptr, int *num);
+int			is_valid_num(char *nptr);
+int			has_duplicate(t_stack *stack, int nbr);
+void		free_split(char **split);
 
 /*----PARSER--------------*/
-long int	ft_atol_ps(const char	*nptr, int *error_code);
-int			is_valid_num(char *nptr);
-int			is_duplicate_num(t_list **stack_a, long nbr);
-void		free_split(char **split);
-void		free_partial_split(char **split, int count);
-int			parser(char *argv[], t_list **stack_a);
-
+int	parser(int argc, char *argv[], t_stack *stack_a);
 
 /*-----SORTING------------*/
-/*void	sort_3(t_list **stack);
-void	sort_5(t_list **stack_a, t_list **stack_b); */
+/*void	sort_3(t_stack **stack);
+void	sort_5(t_stack **stack_a, t_stack **stack_b); */
 #endif 
 
-
-//	seq -500 800 | shuf -n 20 | tr '\n' ' '
+//	ARG="seq -500 800 | shuf -n 20 | tr '\n' ' '"; ./push_swap $ARG | ./checker_linux $ARG wc -l

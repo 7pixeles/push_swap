@@ -28,6 +28,8 @@ CLEAN   = $(YELLOW)[CLEAN]$(RESET)
 NAME	= push_swap
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra -MMD -MP
+
+# TODO En código final, eliminar SANITIZE
 SANITIZE = -g3 -fsanitize=address
 
 LIBFT_PATH	= ./lib/libft

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_node	*new_node(int value)
+t_node	*init_node(int value)
 {
 	t_node	*new_node;
 

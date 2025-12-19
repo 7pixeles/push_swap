@@ -27,18 +27,6 @@ void	free_split(char **split)
 	free(split);
 }
 
-void	free_partial_split(char **split, int count)
-{
-	int	i;
-
-	i = 0;
-	while (i < count)
-	{
-		free (split[i]);
-		i++;
-	}
-	free(split);
-}
 
 void	exit_code(t_stack *a, t_stack *b, int code)
 {

@@ -12,50 +12,41 @@
 
 #include "push_swap.h"
 
-void	print_stack(t_list *stack)
+void	print_stack(t_stack *stack)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
-	tmp = stack;
+	tmp = stack->top;
 	while (tmp)
 	{
-		ft_printf("%d\n", *(int *)tmp->content);
+		ft_printf("%d\n", tmp->value);
 		tmp = tmp->next;
 	}
 }
 
-void	print_stacks(t_list *stack_a, t_list *stack_b)
+// TODO En código final, eliminar el pretty stack, tiene función prohibida 
+void	pretty_stack(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_printf("[Stack A]\n");
-	ft_printf("-----\n");
-	print_stack(stack_a);
-	ft_printf("[Stack B]\n");
-	ft_printf("-----\n");
-	print_stack(stack_b);
-}
-
-void	pretty_stack(t_list *stack_a, t_list *stack_b)
-{
-	t_list	*tmp_a = stack_a;
-	t_list	*tmp_b = stack_b;
+	t_node	*tmp_a = stack_a->top;
+	t_node	*tmp_b = stack_b->top;
 
 	printf("[Stack A] [Stack B]\n");
 	while (tmp_a || tmp_b)
 	{
 		if (tmp_a && tmp_b)
 		{
-			printf("%5d%10d\n", *(int *)tmp_a->content, *(int *)tmp_b->content);
+			printf("%5d%10d\n", tmp_a->value, tmp_b->value);
 			tmp_a = tmp_a->next;
 			tmp_b = tmp_b->next;
 		}
 		else if (tmp_a)
 		{
-			printf("%5d\n", *(int *)tmp_a->content);
+			printf("%5d\n", tmp_a->value);
 			tmp_a = tmp_a->next;
 		}
 		else if (tmp_b)
 		{
-			printf("%5d\n", *(int *)tmp_b->content);
+			printf("%5d\n", tmp_b->value);
 			tmp_b = tmp_b->next;
 		}
 	}

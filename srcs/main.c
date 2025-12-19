@@ -14,16 +14,17 @@
 
 int	main(int argc, char *argv[])
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	stack_a;
+	t_stack	stack_b;
 
 	if (argc < 2)
-		exit_code(NULL, NULL, ERROR_ARGS);
-	if (!parser(argv, &stack_a))
-		exit_code(stack_a, stack_b, ERROR_PARSING);
-	init_stack(stack_a, 'A');
-	init_stack(stack_b, 'B');
-	pretty_stack(stack_a, stack_b);
-	exit_code(stack_a, stack_b, ALREADY_SORTED);
+		exit_code(NULL, NULL, 0);
+	if (!parser(argc, argv, &stack_a))
+		exit_code(&stack_a, NULL, ERROR_PARSING);
+	init_stack(&stack_b, 'B');
+	// HACE COSAS
+	pretty_stack(&stack_a, &stack_b);
+	// HASTA AQUI
+	exit_code(&stack_a, &stack_b, ALREADY_SORTED);
 	return (0);
 }
