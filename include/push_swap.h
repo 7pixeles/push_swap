@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/18 10:05:49 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/19 19:50:42 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ t_node	*pop_top(t_stack *stack);
 */
 t_node	*pop_bottom(t_stack *stack);
 
+/*
+* ····· PUSH_SWAP MOVEMENTS
+*/
+void	push_pa(t_stack *stack_b, t_stack *stack_a);
+void	push_pb(t_stack *stack_a, t_stack *stack_b);
 
 /*--- printer.c ---*/
 void	print_stack(t_stack *stack);
@@ -86,7 +91,6 @@ void	print_stack(t_stack *stack);
 void	pretty_stack(t_stack *stack_a, t_stack *stack_b);
 
 /* ---- exit.c */
-void	exit_code(t_stack *a, t_stack *b, int code);
 void	exit_code(t_stack *a, t_stack *b, int code);
 
 /*--- PARSER UTILS -------*/
