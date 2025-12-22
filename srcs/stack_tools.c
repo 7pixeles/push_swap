@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:10:56 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/19 19:39:02 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/12/20 11:48:56 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,19 @@ void	clear_stack(t_stack *stack)
 		current = tmp_node;
 	}
 	init_stack(stack, stack->name);
+}
+
+int	stack_is_sorted(t_stack *stack_a)
+{
+	t_node	*current;
+
+	current = stack_a->top;
+	while (current->next != NULL)
+	{
+		if (current->value < current->next->value)
+			current = current->next;
+		else
+			return (0);
+	}
+	return (1);
 }

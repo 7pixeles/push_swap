@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/19 19:50:42 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/12/22 20:00:59 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	init_stack(t_stack *stack, char name);
 */
 void	clear_stack(t_stack *stack);
 
+int	stack_is_sorted(t_stack *stack_a);
 /*
 * ····· STACK BASIC MOVEMENTS
 */
@@ -82,8 +83,14 @@ t_node	*pop_bottom(t_stack *stack);
 /*
 * ····· PUSH_SWAP MOVEMENTS
 */
-void	push_pa(t_stack *stack_b, t_stack *stack_a);
-void	push_pb(t_stack *stack_a, t_stack *stack_b);
+void	push(t_stack *stack_from, t_stack *stack_to);
+void	swap(t_stack *stack);
+void	rotate_ra(t_stack *stack_a);
+void	rotate_rb(t_stack *stack_b);
+void	rotate_rr(t_stack *stack_a, t_stack *stack_b);
+void	r_rotate_rra(t_stack *stack_a);
+void	r_rotate_rrb(t_stack *stack_b);
+void	r_rotate_rrr(t_stack *stack_a,t_stack *stack_b);
 
 /*--- printer.c ---*/
 void	print_stack(t_stack *stack);
@@ -103,8 +110,9 @@ void		free_split(char **split);
 int	parser(int argc, char *argv[], t_stack *stack_a);
 
 /*-----SORTING------------*/
-/*void	sort_3(t_stack **stack);
-void	sort_5(t_stack **stack_a, t_stack **stack_b); */
+void	sort_three(t_stack *stack);
+
+
 #endif 
 
 //	ARG="seq -500 800 | shuf -n 20 | tr '\n' ' '"; ./push_swap $ARG | ./checker_linux $ARG wc -l

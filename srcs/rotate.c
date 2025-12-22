@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/19 19:38:22 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/22 18:16:17 by ayua             ###   ########.fr       */
+/*   Created: 2025/12/22 18:03:52 by ayua              #+#    #+#             */
+/*   Updated: 2025/12/22 18:21:25 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_move(t_stack *stack_from, t_stack *stack_to)
+static void	rotate_move(t_stack *stack)
 {
-	t_node	*top_a;
+	t_node	*node;
 
-	top_a = pop_top(stack_from);
-	push_top(stack_to, top_a);
+	if (stack->size < 2)
+		return ;
+	node = pop_top(stack);
+	push_bottom(stack, node);
 }
-void	push(t_stack *stack_from, t_stack *stack_to)
+
+void	rotate_ra(t_stack *stack_a)
 {
-	push_move(stack_from, stack_to);
-	if (stack_from->name == 'A')
-		write(1, "pa\n", 3);
-	else
-		write(1, "pb\n", 3);
+	rotate_move(stack_a);
+	write(1, "ra\n", 3);
+}
+
+void	rotate_rb(t_stack *stack_b)
+{
+	rotate_move(stack_b);
+	write(1, "rb\n", 3);
+}
+
+void	rotate_rr(t_stack *stack_a, t_stack *stack_b)
+{
+	rotate_move(stack_a);
+	rotate_move(stack_b);
+	write(1, "rr\n", 3);
 }
