@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 19:38:22 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/22 18:16:17 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/26 20:38:48 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	push(t_stack *stack_from, t_stack *stack_to)
 {
 	push_move(stack_from, stack_to);
 	if (stack_from->name == 'A')
-		write(1, "pa\n", 3);
-	else
 		write(1, "pb\n", 3);
+	else
+		write(1, "pa\n", 3);
 }

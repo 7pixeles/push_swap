@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/22 20:00:59 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/26 20:02:41 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	init_stack(t_stack *stack, char name);
 void	clear_stack(t_stack *stack);
 
 int	stack_is_sorted(t_stack *stack_a);
+
+void	index_node(t_stack *stack);
 /*
 * ····· STACK BASIC MOVEMENTS
 */
@@ -84,7 +86,9 @@ t_node	*pop_bottom(t_stack *stack);
 * ····· PUSH_SWAP MOVEMENTS
 */
 void	push(t_stack *stack_from, t_stack *stack_to);
-void	swap(t_stack *stack);
+void	swap_sa(t_stack *stack);
+void	swap_sb(t_stack *stack_b);
+void	swap_ss(t_stack *stack_a, t_stack *stack_b);
 void	rotate_ra(t_stack *stack_a);
 void	rotate_rb(t_stack *stack_b);
 void	rotate_rr(t_stack *stack_a, t_stack *stack_b);
@@ -111,7 +115,7 @@ int	parser(int argc, char *argv[], t_stack *stack_a);
 
 /*-----SORTING------------*/
 void	sort_three(t_stack *stack);
-
+// void	sort_five(t_stack *stack_a, t_stack *stack_b);
 
 #endif 
 

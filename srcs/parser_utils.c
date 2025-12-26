@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 09:40:37 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/19 19:38:54 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/12/26 20:39:08 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,3 @@ int	has_duplicate(t_stack *stack, int nbr)
 	}
 	return (0);
 }
-

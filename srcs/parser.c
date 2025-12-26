@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 09:40:20 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/20 13:20:38 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/26 20:40:55 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static int check_splitted(char **arg_splitted, t_stack *stack_a)
 {
-	int	k;
-	int	num;
-
+	int		k;
+	int		num;
 	t_node	*new_node;
+
 	k = 0;
 	while (arg_splitted[k])
 	{
-		if(!is_valid_num(arg_splitted[k]))
-			return(free_split(arg_splitted), 0);
-		if(!ft_atol_ps(arg_splitted[k], &num))
-			return(free_split(arg_splitted), 0);
-		if(has_duplicate(stack_a, num))
-			return(free_split(arg_splitted), 0);
+		if (!is_valid_num(arg_splitted[k]))
+			return (free_split(arg_splitted), 0);
+		if (!ft_atol_ps(arg_splitted[k], &num))
+			return (free_split(arg_splitted), 0);
+		if (has_duplicate(stack_a, num))
+			return (free_split(arg_splitted), 0);
 		new_node = init_node(num);
 		if (new_node == NULL)
-			return(free_split(arg_splitted), 0);
+			return (free_split(arg_splitted), 0);
 		push_bottom(stack_a, new_node);
 		k++;
 	}

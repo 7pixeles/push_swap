@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 11:50:12 by ayua              #+#    #+#             */
-/*   Updated: 2025/12/22 18:16:27 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/26 20:40:08 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	swap_move(t_stack *stack)
 {
-	t_node *first;
-	t_node *second;
+	t_node	*first;
+	t_node	*second;
 
 	first = stack->top;
 	second = first->next;
 	first->next = second->next;
-	if(second->next != NULL)
+	if (second->next != NULL)
 		second->next->prev = first;
 	second->prev = NULL;
 	second->next = first;
@@ -30,12 +30,21 @@ static void	swap_move(t_stack *stack)
 		stack->bottom = first;
 }
 
-void	swap(t_stack *stack)
+void	swap_sa(t_stack *stack_a)
 {
-	swap_move(stack);
-	if (stack->name == 'A')
-		write(1, "sa\n", 3);
-	else
-		write(1, "sb\n", 3);
+	swap_move(stack_a);
+	write(1, "sa\n", 3);
 }
 
+void	swap_sb(t_stack *stack_b)
+{
+	swap_move(stack_b);
+	write(1, "sb\n", 3);
+}
+
+void	swap_ss(t_stack *stack_a, t_stack *stack_b)
+{
+	swap_move(stack_a);
+	swap_move(stack_b);
+	write(1, "ss\n", 3);
+}

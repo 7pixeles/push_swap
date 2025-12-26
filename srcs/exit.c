@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 10:42:25 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/19 19:38:49 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/12/26 20:37:55 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	free_split(char **split)
 	free(split);
 }
 
-
 void	exit_code(t_stack *a, t_stack *b, int code)
 {
 	if (a)
@@ -36,6 +35,9 @@ void	exit_code(t_stack *a, t_stack *b, int code)
 		clear_stack(b);
 	if (code == ERROR_ARGS || code == ERROR_PARSING
 		|| code == STDIN_READ_ERROR)
+	{
 		write(2, "Error\n", 6);
+		write(2, "ERROR IN ARGS, PARSING OR STDIN", 32);
+	}
 	exit(code);
 }

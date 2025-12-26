@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:07:16 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/19 19:38:41 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/12/26 20:16:55 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ void	pretty_stack(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (tmp_a && tmp_b)
 		{
-			printf("%5d%10d\n", tmp_a->value, tmp_b->value);
+			printf("[%d] %5d[%d] %10d\n", tmp_a->index, tmp_a->value, tmp_b->index, tmp_b->value);
 			tmp_a = tmp_a->next;
 			tmp_b = tmp_b->next;
 		}
 		else if (tmp_a)
 		{
-			printf("%5d\n", tmp_a->value);
+			printf("[%d] %2d\n", tmp_a->index, tmp_a->value);
 			tmp_a = tmp_a->next;
 		}
 		else if (tmp_b)
 		{
-			printf("%5d\n", tmp_b->value);
+			printf("[%d] %2d\n", tmp_b->index, tmp_b->value);
 			tmp_b = tmp_b->next;
 		}
 	}
