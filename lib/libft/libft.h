@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 16:46:38 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/11/26 19:32:33 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/27 17:08:27 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ typedef struct s_list
 void	del(void *content);
 
 //Standard library
-int			ft_atoi(const char	*nptr);
-long		ft_atol(const char	*nptr);
-void		*ft_calloc(size_t nmemb, size_t size);
+int		ft_atoi(const char	*nptr);
+long	ft_atol(const char	*nptr);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 //String Library
 void	*ft_memchr(const void *s, int c, size_t n);

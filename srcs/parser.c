@@ -6,13 +6,13 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 09:40:20 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/26 20:40:55 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/27 17:05:07 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int check_splitted(char **arg_splitted, t_stack *stack_a)
+static int	check_splitted(char **arg_splitted, t_stack *stack_a)
 {
 	int		k;
 	int		num;

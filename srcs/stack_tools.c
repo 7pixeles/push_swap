@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:10:56 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/20 11:48:56 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/27 17:56:20 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ int	stack_is_sorted(t_stack *stack_a)
 	t_node	*current;
 
 	current = stack_a->top;
+	if (stack_a->top == NULL || stack_a->top == stack_a->bottom)
+		return (1);
 	while (current->next != NULL)
 	{
-		if (current->value < current->next->value)
+		if (current->index < current->next->index)
 			current = current->next;
 		else
 			return (0);

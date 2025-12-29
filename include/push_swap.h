@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/26 20:02:41 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/29 16:37:52 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init_stack(t_stack *stack, char name);
 */
 void	clear_stack(t_stack *stack);
 
-int	stack_is_sorted(t_stack *stack_a);
+int		stack_is_sorted(t_stack *stack_a);
 
 void	index_node(t_stack *stack);
 /*
@@ -69,7 +69,7 @@ void	index_node(t_stack *stack);
 void	push_top(t_stack *stack, t_node *node);
 /*
 *	push_bottom -> Adds an existing node to the bottom of a stack,
-					updating the size
+				   updating the size
 */
 
 void	push_bottom(t_stack *stack, t_node *node);
@@ -94,7 +94,7 @@ void	rotate_rb(t_stack *stack_b);
 void	rotate_rr(t_stack *stack_a, t_stack *stack_b);
 void	r_rotate_rra(t_stack *stack_a);
 void	r_rotate_rrb(t_stack *stack_b);
-void	r_rotate_rrr(t_stack *stack_a,t_stack *stack_b);
+void	r_rotate_rrr(t_stack *stack_a, t_stack *stack_b);
 
 /*--- printer.c ---*/
 void	print_stack(t_stack *stack);
@@ -104,19 +104,39 @@ void	pretty_stack(t_stack *stack_a, t_stack *stack_b);
 /* ---- exit.c */
 void	exit_code(t_stack *a, t_stack *b, int code);
 
+/*
+* ····· PARSER
+*/
+
+int		parser(int argc, char *argv[], t_stack *stack_a);
+
 /*--- PARSER UTILS -------*/
-int			ft_atol_ps(const char *nptr, int *num);
-int			is_valid_num(char *nptr);
-int			has_duplicate(t_stack *stack, int nbr);
-void		free_split(char **split);
+int		ft_atol_ps(const char *nptr, int *num);
+int		is_valid_num(char *nptr);
+int		has_duplicate(t_stack *stack, int nbr);
+void	free_split(char **split);
 
-/*----PARSER--------------*/
-int	parser(int argc, char *argv[], t_stack *stack_a);
-
-/*-----SORTING------------*/
+/*
+* ····· SORTING
+*/
 void	sort_three(t_stack *stack);
-// void	sort_five(t_stack *stack_a, t_stack *stack_b);
+void	sort_five(t_stack *stack_a, t_stack *stack_b);
+void	sort_big(t_stack *stack_a, t_stack *stack_b);
+
+/*-----SORTING UTILS-----------*/
+int		set_n_index_max(t_stack *stack, int n);
+int		set_n_index_min(t_stack *stack, int n);
+void	sort_heap(t_stack *stack_a, t_stack *stack_b, int size_heap);
+
+int		conv_binary(int index);
+int		set_index_max(t_stack *stack);
+int		set_index_min(t_stack *stack);
+int		index_in_top(t_stack *stack, int index);
+void	min_moves(t_stack *stack_to, t_stack *stack_from, int index);
 
 #endif 
 
-//	ARG="seq -500 800 | shuf -n 20 | tr '\n' ' '"; ./push_swap $ARG | ./checker_linux $ARG wc -l
+//ARG=$(seq -500 800 | shuf -n 20 | tr '\n' ' ') ./push_swap $ARG 
+// | ./checker_linux $ARG | wc -l
+// ARGS="seq -500 800 | shuf -n 5 | tr '\n' ' '";
+// ./push_swap $ARGS

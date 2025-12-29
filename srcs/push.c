@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 19:38:22 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/26 20:38:48 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/27 17:06:35 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	push_move(t_stack *stack_from, t_stack *stack_to)
 	top_a = pop_top(stack_from);
 	push_top(stack_to, top_a);
 }
+
 void	push(t_stack *stack_from, t_stack *stack_to)
 {
 	push_move(stack_from, stack_to);

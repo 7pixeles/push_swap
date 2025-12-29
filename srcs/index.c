@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:35:59 by ayua              #+#    #+#             */
-/*   Updated: 2025/12/26 20:37:39 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/27 17:04:39 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,17 @@ void	index_node(t_stack *stack)
 	t_node	*tmp_node;
 	int		i;
 	int		*tmp_array;
-	int		size;
 
 	tmp_node = stack->top;
 	i = 0;
-	size = stack->size;
-	if (size < 2)
+	if (stack->size < 2)
 		return ;
-	//hace una copia del stack a un array -> [DONE]
 	tmp_array = copy_stack_to_array(stack);
-	//ordena el array -> [DONE]
-	sort_array(tmp_array, size);
-	//asigna el index del array al nodo del stack 
+	sort_array(tmp_array, stack->size);
 	while (tmp_node)
 	{
 		i = 0;
-		while (i < size)
+		while (i < stack->size)
 		{
 			if (tmp_array[i] == tmp_node->value)
 			{
@@ -98,7 +93,5 @@ void	index_node(t_stack *stack)
 		}
 		tmp_node = tmp_node->next;
 	}
-	//libera el array_tmp
 	free (tmp_array);
-	//no devuelve nada
 }
