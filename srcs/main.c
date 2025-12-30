@@ -6,7 +6,7 @@
 /*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:24:12 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/30 16:52:48 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/12/30 17:20:24 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int	main(int argc, char *argv[])
 	else if ((&stack_a)->size == 5)
 		sort_five(&stack_a, &stack_b);
 	else
-		sort_big(&stack_a, &stack_b);
+		radix_bits(&stack_a, &stack_b);
 	exit_code(&stack_a, &stack_b, ALREADY_SORTED);
 }
