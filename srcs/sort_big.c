@@ -6,13 +6,13 @@
 /*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:18:17 by ayua              #+#    #+#             */
-/*   Updated: 2025/12/30 15:00:07 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/12/30 16:52:21 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
+/// *SORT HEAP
 /* 1. Dividir el monto de 100 índices en bloques de 5: 
 -     de 0 a 19 - 20 a 39 - 40 a 59 - 60 a 79 - 80 a 99
  2. Buscar el índice mayor de este bloque y pasarlo a B con las reglas de Heap
@@ -32,7 +32,7 @@ mientras i_chunk < 9
 
 */
 
-/* void	sort_big(t_stack *stack_a, t_stack *stack_b)
+void	sort_heap(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i_chunk; // debe recorrer los índices cada 10 iteraciones
 	int	index_min;
@@ -51,8 +51,9 @@ mientras i_chunk < 9
 	{
 		push(stack_b, stack_a);
 	}
-}*/
+}
 
+/// *RADIX BITS
 /* 
 PASO 1:
 	1- Recorro el stack, buscando los índices de los nodos
@@ -60,7 +61,7 @@ PASO 1:
 	3- calculo cuánto cuesta pasarlo a B (min-moves)
 	4- lo muevo a B
 */
-void	sort_big(t_stack *stack_a, t_stack *stack_b)
+void	radix_bits(t_stack *stack_a, t_stack *stack_b)
 {
 	int	original_size;
 	int	bits;

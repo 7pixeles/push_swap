@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 12:42:48 by ayua              #+#    #+#             */
-/*   Updated: 2025/12/29 14:44:36 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/30 16:51:48 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	set_n_index_min(t_stack *stack, int n)
 	return (index_min);
 }
 
-void	sort_heap(t_stack *stack_a, t_stack *stack_b, int size_heap)
+void	sort_heap_n(t_stack *stack_a, t_stack *stack_b, int size_heap)
 {
 	int		count;
 	int		mount;

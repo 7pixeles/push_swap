@@ -6,7 +6,7 @@
 /*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/30 14:12:27 by ayucarre         ###   ########.fr       */
+/*   Updated: 2025/12/30 16:53:02 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	r_rotate_rrr(t_stack *stack_a, t_stack *stack_b);
 /*--- printer.c ---*/
 void	print_stack(t_stack *stack);
 // TODO En código final, eliminar el pretty stack, tiene función prohibida 
-void	pretty_stack(t_stack *stack_a, t_stack *stack_b);
+/* void	pretty_stack(t_stack *stack_a, t_stack *stack_b); */
 
 /* ---- exit.c */
 void	exit_code(t_stack *a, t_stack *b, int code);
@@ -121,12 +121,13 @@ void	free_split(char **split);
 */
 void	sort_three(t_stack *stack);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
-void	sort_big(t_stack *stack_a, t_stack *stack_b);
+void	sort_heap(t_stack *stack_a, t_stack *stack_b);
+void	radix_bits(t_stack *stack_a, t_stack *stack_b);
 
 /*-----SORTING UTILS-----------*/
 int		set_n_index_max(t_stack *stack, int n);
 int		set_n_index_min(t_stack *stack, int n);
-void	sort_heap(t_stack *stack_a, t_stack *stack_b, int size_heap);
+void	sort_heap_n(t_stack *stack_a, t_stack *stack_b, int size_heap);
 
 int		set_index_max(t_stack *stack);
 int		set_index_min(t_stack *stack);
@@ -139,3 +140,5 @@ void	min_moves(t_stack *stack_to, t_stack *stack_from, int index);
 // | ./checker_linux $ARG | wc -l
 // ARGS="seq -500 800 | shuf -n 5 | tr '\n' ' '";
 // ./push_swap $ARGS
+
+// ./push_swap_visualizer/build/bin/visualizer

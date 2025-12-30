@@ -26,7 +26,6 @@ Input size | Maximun Operations allowed | Max points
  100 | 1300 | **80%**
  500 | 5500 | **80%**
 
-
 ## Instructions
 
 ## Resources
