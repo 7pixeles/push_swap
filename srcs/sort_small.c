@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_small_stack.c                                 :+:      :+:    :+:   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 18:59:16 by ayua              #+#    #+#             */
-/*   Updated: 2025/12/29 14:45:00 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/30 13:55:18 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	sort_three(t_stack *stack)
 {
@@ -42,11 +41,8 @@ void	sort_three(t_stack *stack)
 
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
-	int min_index;
-
-	min_index = set_index_min(stack_a);
-	min_moves(stack_a, stack_b, min_index);
-	min_moves(stack_a, stack_b, min_index);
+	min_moves(stack_a, stack_b, 0);
+	min_moves(stack_a, stack_b, 1);
 	if (!stack_is_sorted(stack_a))
 		sort_three(stack_a);
 	if (stack_is_sorted(stack_b))

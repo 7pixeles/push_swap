@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/29 16:37:52 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/30 14:12:27 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ int		set_n_index_max(t_stack *stack, int n);
 int		set_n_index_min(t_stack *stack, int n);
 void	sort_heap(t_stack *stack_a, t_stack *stack_b, int size_heap);
 
-int		conv_binary(int index);
 int		set_index_max(t_stack *stack);
 int		set_index_min(t_stack *stack);
 int		index_in_top(t_stack *stack, int index);

@@ -1,0 +1,61 @@
+# ------------------------------
+
+# .gitignore estándar
+
+# ------------------------------
+
+# Archivos de sistema
+
+.DS_Store
+Thumbs.db
+
+# Archivos de respaldo y temporales
+
+*~
+*.swp
+*.swo
+*.tmp
+
+# Registros
+
+*.log
+
+# Entornos virtuales y dependencias
+
+node_modules/
+venv/
+.env
+.env.local
+
+# Archivos de compilación
+
+/build/
+/dist/
+/out/
+
+# Archivos de IDEs y editores
+
+.vscode/
+.idea/
+*.iml
+
+# Archivos de compiladores (C / C++)
+
+*.o
+*.a
+*.so
+*.out
+
+# Ejecutables
+
+*.exe
+
+# ------------------------------
+
+# Regla específica del proyecto
+
+# ------------------------------
+
+# Ignorar el visualizador de push_swap
+
+/push_swap_visualizer/

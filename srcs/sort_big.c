@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:18:17 by ayua              #+#    #+#             */
-/*   Updated: 2025/12/29 14:42:09 by ayua             ###   ########.fr       */
+/*   Updated: 2025/12/30 15:00:07 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ mientras i_chunk < 9
 
 */
 
-
-void	sort_big(t_stack *stack_a, t_stack *stack_b)
+/* void	sort_big(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i_chunk; // debe recorrer los índices cada 10 iteraciones
 	int	index_min;
@@ -51,5 +50,40 @@ void	sort_big(t_stack *stack_a, t_stack *stack_b)
 	while (stack_b->top != NULL)
 	{
 		push(stack_b, stack_a);
+	}
+}*/
+
+/* 
+PASO 1:
+	1- Recorro el stack, buscando los índices de los nodos
+	2- Averiguo si el bit i del índice es 0
+	3- calculo cuánto cuesta pasarlo a B (min-moves)
+	4- lo muevo a B
+*/
+void	sort_big(t_stack *stack_a, t_stack *stack_b)
+{
+	int	original_size;
+	int	bits;
+	int	i;
+	
+	i = 0;
+	bits = 0;
+	original_size = stack_a->size;
+	while (!stack_is_sorted(stack_a) && stack_a)
+	{
+		i = 0;
+		while (i < original_size)
+		{
+			if (((stack_a->top->index >> bits) & 1) == 0)
+				push(stack_a, stack_b);
+			else
+				rotate_ra(stack_a);
+			i++;
+		}
+		while (stack_b->top != NULL)
+		{
+			push(stack_b, stack_a);
+		}
+		bits++;
 	}
 }
