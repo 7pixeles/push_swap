@@ -6,7 +6,7 @@
 /*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/30 16:53:02 by ayucarre         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:02:18 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
-# include <stdbool.h>
 
 # define ERROR_PARSING 2
 # define ERROR_SORTING 3
@@ -26,6 +25,10 @@ typedef struct s_node
 {
 	int				value;
 	int				index;
+	int				pos;
+	int				dir;
+	int				cost;
+	int				keep;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
@@ -99,7 +102,7 @@ void	r_rotate_rrr(t_stack *stack_a, t_stack *stack_b);
 /*--- printer.c ---*/
 void	print_stack(t_stack *stack);
 // TODO En código final, eliminar el pretty stack, tiene función prohibida 
-/* void	pretty_stack(t_stack *stack_a, t_stack *stack_b); */
+void	pretty_stack(t_stack *stack_a, t_stack *stack_b);
 
 /* ---- exit.c */
 void	exit_code(t_stack *a, t_stack *b, int code);
@@ -123,15 +126,22 @@ void	sort_three(t_stack *stack);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_heap(t_stack *stack_a, t_stack *stack_b);
 void	radix_bits(t_stack *stack_a, t_stack *stack_b);
+/* void	turk_algo(t_stack *stack_a, t_stack *stack_b); */
 
 /*-----SORTING UTILS-----------*/
+void	calc_cost_dir(t_stack *stack, t_node *node);
+int		*copy_stack_to_array(t_stack *stack);
+
+
+// HEAP
 int		set_n_index_max(t_stack *stack, int n);
 int		set_n_index_min(t_stack *stack, int n);
 void	sort_heap_n(t_stack *stack_a, t_stack *stack_b, int size_heap);
 
+
 int		set_index_max(t_stack *stack);
 int		set_index_min(t_stack *stack);
-int		index_in_top(t_stack *stack, int index);
+int		is_index_in_top(t_stack *stack, int index);
 void	min_moves(t_stack *stack_to, t_stack *stack_from, int index);
 
 #endif 

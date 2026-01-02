@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ayucarre <ayucarre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:35:59 by ayua              #+#    #+#             */
-/*   Updated: 2025/12/27 17:04:39 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/02 18:01:18 by ayucarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	*copy_stack_to_array(t_stack *stack)
+int	*copy_stack_to_array(t_stack *stack)
 {
 	t_node	*tmp;
 	int		*array_tmp;
@@ -94,4 +94,18 @@ void	index_node(t_stack *stack)
 		tmp_node = tmp_node->next;
 	}
 	free (tmp_array);
+}
+
+void	calc_position(t_stack *stack)
+{
+	t_node	*tmp_node;
+	int		i;
+	tmp_node = stack->top;
+	i = 0;
+	while (tmp_node && i < stack->size)
+	{
+		tmp_node->pos = i;
+		i++;
+		tmp_node = tmp_node->next;
+	}
 }
