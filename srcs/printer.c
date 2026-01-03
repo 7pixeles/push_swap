@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:07:16 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/29 16:37:18 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/03 11:20:31 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_stack(t_stack *stack)
 	node = stack->top;
 	while (node)
 	{
-		ft_printf("[%d] %d\n", node->index, node->value);
+		ft_printf("[%d] %d\n", node->cost, node->value);
 		node = node->next;
 	}
 }
@@ -35,18 +35,18 @@ void	pretty_stack(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (tmp_a && tmp_b)
 		{
-			printf("[%d] %d %8d [%-1d]\n", tmp_a->index, tmp_a->value, tmp_b->value, tmp_b->index);
+			printf("[%d] %d %8d [%-1d]\n", tmp_a->cost, tmp_a->value, tmp_b->value, tmp_b->cost);
 			tmp_a = tmp_a->next;
 			tmp_b = tmp_b->next;
 		}
 		else if (tmp_a)
 		{
-			printf("[%d] %2d\n", tmp_a->index, tmp_a->value);
+			printf("[%d] %2d\n", tmp_a->cost, tmp_a->value);
 			tmp_a = tmp_a->next;
 		}
 		else if (tmp_b)
 		{
-			printf("[%d] %2d\n", tmp_b->index, tmp_b->value);
+			printf("[%d] %2d\n", tmp_b->cost, tmp_b->value);
 			tmp_b = tmp_b->next;
 		}
 	}

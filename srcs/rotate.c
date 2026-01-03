@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 18:03:52 by ayua              #+#    #+#             */
-/*   Updated: 2025/12/27 12:05:42 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/03 13:14:44 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ static void	rotate_move(t_stack *stack)
 void	rotate_ra(t_stack *stack_a)
 {
 	rotate_move(stack_a);
+	calc_cost(stack_a);
 	write(1, "ra\n", 3);
 }
 
 void	rotate_rb(t_stack *stack_b)
 {
 	rotate_move(stack_b);
+	calc_cost(stack_b);
 	write(1, "rb\n", 3);
 }
 
@@ -38,5 +40,7 @@ void	rotate_rr(t_stack *stack_a, t_stack *stack_b)
 {
 	rotate_move(stack_a);
 	rotate_move(stack_b);
+	calc_cost(stack_a);
+	calc_cost(stack_b);
 	write(1, "rr\n", 3);
 }

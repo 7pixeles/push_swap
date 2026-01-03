@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_utils.c                                     :+:      :+:    :+:   */
+/*   tools_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 09:40:37 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/26 20:39:08 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/03 13:38:02 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// * ✔️ Corregida
 int	ft_atol_ps(const char *nptr, int *num)
 {
 	int		i;
@@ -41,7 +40,6 @@ int	ft_atol_ps(const char *nptr, int *num)
 	return (1);
 }
 
-// * ✔️ Corregida
 int	is_valid_num(char *nptr)
 {
 	int	i;
@@ -62,7 +60,6 @@ int	is_valid_num(char *nptr)
 	return (1);
 }
 
-// * ✔️ Corregida
 int	has_duplicate(t_stack *stack, int nbr)
 {
 	t_node	*current;
