@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2026/01/03 14:13:13 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/04 16:29:21 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include <stdbool.h>
 
 # define ERROR_PARSING 2
 # define ERROR_SORTING 3
@@ -27,6 +28,7 @@ typedef struct s_node
 	int				index;
 	int				pos;
 	int				cost;
+	int				dir;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
@@ -99,11 +101,22 @@ void	free_split(char **split);
 void	sort_three(t_stack *stack);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_big(t_stack *stack_a, t_stack *stack_b);
-
 //--- SORTING UTILS
-int		set_cost_min(t_stack *stack);
-int		dir_cost(t_stack *stack, int cost);
-void	min_moves(t_stack *stack_to, t_stack *stack_from, int index);
+/// @brief Busca el nodo con el índice absoluto más bajo
+/// @param stack Puntero al stack en el que buscar el nodo
+/// @return Puntero al nodo encontrado
+t_node	*get_index_min(t_stack *stack);
+void	move_n_index(t_stack *stack_from, t_stack *stack_to, int moves);
+void	move_n_target(t_stack *stack_from, t_stack *stack_to);
+/// @brief Busca en stack el índice más bajo con el menor coste posible
+/// @param stack stack en el que buscar
+/// @return Puntero al nodo encontrado, NULL si no lo encuentra
+t_node *find_target(t_stack *stack);
+
+/// @brief mueve a la parte superior del stack el nodo con el índice más bajo y el coste menor
+/// @param stack 
+void	move_target_top(t_stack *stack);
+
 
 
 // TODO En código final, eliminar el pretty stack, tiene función prohibida 

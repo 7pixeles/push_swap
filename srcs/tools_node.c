@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 13:33:10 by ayua              #+#    #+#             */
-/*   Updated: 2026/01/03 14:16:30 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/04 15:32:16 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_node	*init_node(int value)
 	new_node->index = -1;
 	new_node->cost = 0;
 	new_node->pos = 0;
+	new_node->dir = 0;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
@@ -72,7 +73,6 @@ void	calc_pos(t_stack *stack)
 		current = current->next;
 		pos++;
 	}
-	stack->size = pos;
 }
 
 void	calc_cost(t_stack *stack)
@@ -83,14 +83,37 @@ void	calc_cost(t_stack *stack)
 	if (!stack)
 		return;
 	size = calc_size(stack);
+	calc_pos(stack);
 	current = stack->top;
 	while (current)
 	{	
-		if (current->pos <= stack->size / 2)
+		if (current->pos <= size / 2)
+		{
 			current->cost = current->pos;
+			current->dir = 1;
+		}
 		else
-			current->cost = stack->size - current->pos;
+		{
+			current->cost = size - current->pos;
+			current->dir = -1;
+		}
 		current = current->next;
 	}
 	stack->size = size;
+}
+
+int	find_low_cost(t_stack *stack)
+{
+	int	i;
+	int	low_cost;
+	
+	i = 0;
+	low_cost = 0;
+	while (i < stack->size)
+	{
+		if (stack->top->cost < low_cost)
+			low_cost = i;
+		i++;
+	}
+	return (low_cost);
 }

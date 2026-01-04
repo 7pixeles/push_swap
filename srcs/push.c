@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 19:38:22 by ayucarre          #+#    #+#             */
-/*   Updated: 2026/01/03 13:26:57 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/03 19:43:01 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ static void	push_move(t_stack *stack_from, t_stack *stack_to)
 void	push(t_stack *stack_from, t_stack *stack_to)
 {
 	push_move(stack_from, stack_to);
-	calc_cost(stack_from);
-	calc_cost(stack_to);
 	if (stack_from->name == 'A')
 		write(1, "pb\n", 3);
 	else

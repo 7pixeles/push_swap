@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 18:59:16 by ayua              #+#    #+#             */
-/*   Updated: 2026/01/03 11:21:07 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/04 16:00:10 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void	sort_three(t_stack *stack)
 
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
-	min_moves(stack_a, stack_b, 0);
-	min_moves(stack_a, stack_b, 1);
+	move_n_index(stack_a, stack_b, 2);
 	if (!stack_is_sorted(stack_a))
 		sort_three(stack_a);
 	if (stack_is_sorted(stack_b))
