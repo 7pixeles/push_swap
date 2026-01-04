@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2026/01/04 16:29:21 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/04 23:25:10 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_node
 	int				value;
 	int				index;
 	int				pos;
-	int				cost;
 	int				dir;
 	struct s_node	*next;
 	struct s_node	*prev;
@@ -45,9 +44,8 @@ typedef struct s_stack
 * 	INICIALIZATION NODE & PARAMS 
 */
 t_node	*init_node(int value);
-void	calc_index(t_stack *stack);
+bool	calc_index(t_stack *stack);
 void	calc_pos(t_stack *stack);
-void	calc_cost(t_stack *stack);
 
 /*
 * 	INICIALIZATION STACKS
@@ -102,22 +100,12 @@ void	sort_three(t_stack *stack);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_big(t_stack *stack_a, t_stack *stack_b);
 //--- SORTING UTILS
-/// @brief Busca el nodo con el índice absoluto más bajo
-/// @param stack Puntero al stack en el que buscar el nodo
-/// @return Puntero al nodo encontrado
-t_node	*get_index_min(t_stack *stack);
-void	move_n_index(t_stack *stack_from, t_stack *stack_to, int moves);
-void	move_n_target(t_stack *stack_from, t_stack *stack_to);
-/// @brief Busca en stack el índice más bajo con el menor coste posible
-/// @param stack stack en el que buscar
-/// @return Puntero al nodo encontrado, NULL si no lo encuentra
-t_node *find_target(t_stack *stack);
 
-/// @brief mueve a la parte superior del stack el nodo con el índice más bajo y el coste menor
-/// @param stack 
-void	move_target_top(t_stack *stack);
-
-
+int			get_min_pos(t_stack *stack);
+int			get_max_index_pos(t_stack *stack);
+void		push_min_to_b(t_stack *stack_a, t_stack *stack_b);
+void		push_max_to_a(t_stack *stack_a, t_stack *stack_b);
+void		push_rotate_b(t_stack *stack_a, t_stack *stack_b, int *range);
 
 // TODO En código final, eliminar el pretty stack, tiene función prohibida 
 /*

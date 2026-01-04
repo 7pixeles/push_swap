@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:24:12 by ayucarre          #+#    #+#             */
-/*   Updated: 2026/01/04 16:43:34 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/04 18:20:01 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int argc, char *argv[])
 		exit_code(&stack_a, NULL, ALREADY_SORTED);
 	init_stack(&stack_b, 'B');
 /* 	ft_printf("\nBEFORE:\n-------\n");
-	pretty_stack(&stack_a, &stack_b); */
-	ft_printf("-------\n");
+pretty_stack(&stack_a, &stack_b); 
+ft_printf("-------\n");*/
 	if ((&stack_a)->size == 2)
 		swap_sa(&stack_a);
 	else if ((&stack_a)->size == 3)

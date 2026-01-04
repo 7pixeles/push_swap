@@ -6,186 +6,148 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:55:25 by ayua              #+#    #+#             */
-/*   Updated: 2026/01/04 16:41:11 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/04 23:30:20 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* 
-/// @brief Busca el primer nodo con el coste más bajo
-/// @param stack Puntero al stack en el que buscar el nodo
-/// @return Puntero al nodo encontrado
-t_node *set_cost_min(t_stack *stack)
+int	get_min_pos(t_stack *stack)
 {
-	t_node	*current;
-	t_node	*min_cost;
-
-	if (!stack || !stack->top)
-		return NULL;
-	calc_pos(stack);
-	calc_cost(stack);
-	current = stack->top;
-	min_cost = current;
-	while (current)
-	{
-		if (current->cost < min_cost->cost)
-			min_cost = current;
-		current = current->next;
-	}
-	return min_cost;
-}
- */
-
- /* 
-/// @brief Busca el nodo pasado por parámetro en el stack indicado
-/// @param stack Puntero al stack en el que buscar el nodo
-/// @return Puntero al nodo encontrado, NULL si no lo encuentra
-t_node	*find_node_index(t_stack *stack, t_node *node)
-{
-	t_node	*current;
-
-	if (!stack)
-		return NULL;
-	current = stack->top;
-	while (current)
-	{
-		if (current->index == node->index)
-			return current;
-		current = current->next;
-	}
-	return NULL;
-}
- */
-
-/// @brief Mueve n veces los índices más pequeños encontrados en A de manera más eficiente
-/// @param stack_from 
-/// @param stack_to 
-/// @param n 
-void	move_n_index(t_stack *stack_from, t_stack *stack_to, int n)
-{
-	t_node	*low_index;
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		low_index = get_index_min(stack_from);
-		if (low_index->pos < stack_from->size / 2)
-		{
-			while (stack_from->top->index != low_index->index)
-				rotate_ra(stack_from);
-		}
-		else
-			while (stack_from->top->index != low_index->index)
-				r_rotate_rra(stack_from);
-		push(stack_from, stack_to);
-		i++;
-	}
-}
-
-void	move_n_target(t_stack *stack_from, t_stack *stack_to)
-{
-	t_node *target;
+	t_node *current;
+	int min_value;
+	int	min_pos;
+	int	pos;
 	
-	if (!stack_from || stack_from->size == 0)
-		return ;
-	target = find_target(stack_from);
-	if (target->pos < stack_from->size / 2)
-	{
-		while (stack_from->top->index != target->index)
-			rotate_ra(stack_from);
-	}
-	else
-		while (stack_from->top->index != target->index)
-			r_rotate_rra(stack_from);
-	push(stack_from, stack_to);
-
-}
-
-t_node *get_index_min(t_stack *stack)
-{
-	t_node *current;
-	t_node *min_index;
-
-	if (!stack || !stack->top)
-		return NULL;
 	current = stack->top;
-	min_index = current;
-	while (current)
+	min_value = current->value;
+	pos = 0;
+	min_pos = 0;
+	while (current->next)
 	{
-		if (current->index < min_index->index)
-			min_index = current;
+		pos++;
 		current = current->next;
+		if (current->value < min_value)
+		{
+			min_value = current->value;
+			min_pos = pos;
+		}
 	}
-	return min_index;
+	return (min_pos);
 }
 
-t_node *find_target(t_stack *stack)
+int get_max_index_pos(t_stack *stack)
 {
 	t_node *current;
-	t_node *target;
-	int	min_cost;
-	int	max_index;
-
-	if (!stack)
-		return NULL;
+	int max_index;
+	int	max_pos;
+	int	pos;
+	
 	current = stack->top;
-	target = current;
 	max_index = current->index;
-	min_cost = current->cost;
+	max_pos = 0;
+	pos = 0;
 	while (current)
 	{
 		if (current->index > max_index)
 		{
 			max_index = current->index;
-			min_cost = current->cost;
-			target = current;
+			max_pos = pos;
 		}
-		else if (current->index == max_index && current->cost < min_cost)
+		current = current->next;
+		pos++;
+	}
+	return (max_pos);
+}
+
+void push_max_to_a(t_stack *stack_a, t_stack *stack_b)
+{
+	int	dist;
+	int	max_pos;
+	
+	while(stack_b->size > 0)
+	{
+		max_pos = get_max_index_pos(stack_b);
+		if (max_pos <= stack_b->size / 2)
 		{
-			min_cost = current->cost;
-			target = current;
+			while (max_pos > 0)
+			{
+				rotate_rb(stack_b);
+				max_pos--;
+			}
 		}
-		current = current->next;
-	}
-	return (target);
-}
-
-void	move_target_top(t_stack *stack)
-{
-	t_node	*target;
-
-	if (!stack || !stack->top)
-		return;
-	calc_pos(stack);
-	calc_cost(stack);
-	target = find_target(stack);
-	while (stack->top != target)
-	{
-		if (target->pos <= stack->size / 2 && stack->name == 'A')
-			rotate_ra(stack);
-		else if(target->pos > stack->size / 2 && stack->name == 'A')
-			r_rotate_rra(stack);
-		else if (target->pos <= stack->size / 2 && stack->name == 'B')
-			rotate_rb(stack);
-		else 
-			r_rotate_rrb(stack);
+		else
+		{
+			dist = stack_b->size - max_pos;
+			while (dist > 0)
+			{
+				r_rotate_rrb(stack_b);
+				dist--;
+			}
+		}
+		push(stack_b, stack_a);
 	}
 }
-/* 
-t_node	*find_node_cost(t_stack *stack, t_node *node)
-{
-	t_node	*current;
 
-	if (!stack)
-		return NULL;
-	current = stack->top;
-	while (current)
+void push_min_to_b(t_stack *stack_a, t_stack *stack_b)
+{
+	int	dist;
+	int	min_pos;
+	
+	while(stack_b->size > 0)
 	{
-		if (current->cost == node->cost)
-			return current;
-		current = current->next;
+		min_pos = get_min_pos(stack_b);
+		if (min_pos <= stack_a->size / 2)
+		{
+			while (min_pos > 0)
+			{
+				rotate_ra(stack_a);
+				min_pos--;
+			}
+		}
+		else
+		{
+			dist = stack_b->size - min_pos;
+			while (dist > 0)
+			{
+				r_rotate_rra(stack_a);
+				dist--;
+			}
+		}
+		push(stack_a, stack_b);
 	}
-	return NULL;
-} */
+}
+
+void push_rotate_b(t_stack *stack_a, t_stack *stack_b, int *range)
+{
+	push(stack_a, stack_b);
+	rotate_rb(stack_b);
+	range++;
+}
+
+void	sort_big(t_stack *stack_a, t_stack *stack_b)
+{
+	int	chunk_size;
+	int	range;
+
+	if (!calc_index(stack_a))
+		exit_code(stack_a, stack_b, EXIT_FAILURE);
+	if (stack_a->size <= 100)
+		chunk_size = 20;
+	else
+		chunk_size = 40;
+	range = 0;
+	while (stack_a->size > 0)
+	{
+		if (stack_a->top->index <= range)
+			push_rotate_b(stack_a, stack_b, &range);
+		else if(stack_a->top->index <= range + chunk_size)
+		{
+			push(stack_a, stack_b);
+			range++;
+		}
+		else
+			rotate_ra(stack_a);
+	}
+	push_max_to_a(stack_a, stack_b);
+}
