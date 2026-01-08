@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:24:12 by ayucarre          #+#    #+#             */
-/*   Updated: 2026/01/04 18:20:01 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/08 18:25:10 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ ft_printf("-------\n");*/
 		swap_sa(&stack_a);
 	else if ((&stack_a)->size == 3)
 		sort_three(&stack_a);
+	else if ((&stack_a)->size == 4)
+		sort_four(&stack_a, &stack_b);
 	else if ((&stack_a)->size == 5)
 		sort_five(&stack_a, &stack_b);
 	else

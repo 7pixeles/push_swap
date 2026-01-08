@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 18:59:16 by ayua              #+#    #+#             */
-/*   Updated: 2026/01/04 23:19:48 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/08 18:42:41 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,24 @@ void	sort_three(t_stack *stack)
 	}
 }
 
+void	sort_four(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a->bottom->index == 2 && stack_a->top->index == 3 && 
+		stack_a->top->next->index == 0 && stack_a->bottom->prev->index == 1)
+		rotate_ra(stack_a);
+	else
+	{
+		push_min_to_b(stack_a, stack_b);
+		sort_three(stack_a);
+		push(stack_b, stack_a);
+	}
+}
+
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_a->size > 3)
 		push_min_to_b(stack_a, stack_b);
-	if (!stack_is_sorted(stack_a))
-		sort_three(stack_a);
-	if (stack_is_sorted(stack_b))
-		swap_sb(stack_b);
-	while (stack_b->top != NULL)
-	{
+	sort_three(stack_a);
+	while (stack_b->size > 0)
 		push(stack_b, stack_a);
-	}
 }
