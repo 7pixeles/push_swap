@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:18:17 by ayua              #+#    #+#             */
-/*   Updated: 2026/01/08 18:46:12 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/11 12:44:33 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sort_big(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (stack_a->top->index <= range)
 			push_rotate_b(stack_a, stack_b, &range);
-		else if(stack_a->top->index <= range + chunk_size)
+		else if (stack_a->top->index <= range + chunk_size)
 		{
 			push(stack_a, stack_b);
 			range++;

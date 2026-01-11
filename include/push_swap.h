@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:41 by ayucarre          #+#    #+#             */
-/*   Updated: 2026/01/08 19:13:36 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/11 12:11:40 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ typedef struct s_node
 {
 	int				value;
 	int				index;
-	int				pos;
-	int				dir;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
@@ -45,7 +43,6 @@ typedef struct s_stack
 */
 t_node			*init_node(int value);
 bool			calc_index(t_stack *stack);
-void			calc_pos(t_stack *stack);
 
 /*
 * 	INICIALIZATION STACKS
@@ -108,19 +105,12 @@ void			push_min_to_b(t_stack *stack_a, t_stack *stack_b);
 void			push_max_to_a(t_stack *stack_a, t_stack *stack_b);
 void			push_rotate_b(t_stack *stack_a, t_stack *stack_b, int *range);
 
-// TODO En código final, eliminar el pretty stack, tiene función prohibida 
-/*
-* 	PRINTER
-*/
-void			print_stack(t_stack *stack);
-void			pretty_stack(t_stack *stack_a, t_stack *stack_b);
-
 #endif 
 
 /* 
 * 	TESTING CONSOLE
 	
-	ARG=$(seq -500 800 | shuf -n 20 | tr '\n' ' ')
+	ARG=$(seq -500 800 | shuf -n 100 | tr '\n' ' ')
 	./push_swap $ARG
 	| ./checker_linux $ARG | wc -l
 	./push_swap_visualizer/build/bin/visualizer

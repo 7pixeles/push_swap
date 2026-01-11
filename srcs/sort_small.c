@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 18:59:16 by ayua              #+#    #+#             */
-/*   Updated: 2026/01/08 18:42:41 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/11 12:09:49 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	sort_three(t_stack *stack)
 
 void	sort_four(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->bottom->index == 2 && stack_a->top->index == 3 && 
-		stack_a->top->next->index == 0 && stack_a->bottom->prev->index == 1)
+	if (stack_a->bottom->index == 2 && stack_a->top->index == 3
+		&& stack_a->top->next->index == 0 && stack_a->bottom->prev->index == 1)
 		rotate_ra(stack_a);
 	else
 	{

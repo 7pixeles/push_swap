@@ -6,7 +6,7 @@
 #    By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/01 12:30:15 by ayucarre          #+#    #+#              #
-#    Updated: 2025/12/13 11:51:12 by ayua             ###   ########.fr        #
+#    Updated: 2026/01/11 12:00:15 by ayua             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,6 @@ NAME	= push_swap
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra -MMD -MP
 
-# TODO En código final, eliminar SANITIZE
-SANITIZE = -g3 -fsanitize=address
-
 LIBFT_PATH	= ./lib/libft
 HEADER_LIBFT = -I $(LIBFT_PATH)
 HEADER_PS = -I include
@@ -42,8 +39,22 @@ LIBS	= $(LIBFT)
 SRCS_DIR	= srcs
 OBJ_DIR		= obj
 
-# TODO En código final, poner las direcciones de todos los archivos
-SRCS	= $(wildcard $(SRCS_DIR)/*.c)
+SRCS	=	$(SRCS_DIR)/exit.c \
+			$(SRCS_DIR)/push.c \
+			$(SRCS_DIR)/sort_big.c \
+			$(SRCS_DIR)/swap.c \
+			$(SRCS_DIR)/tools_parser.c \
+			$(SRCS_DIR)/main.c \
+			$(SRCS_DIR)/rotate.c \
+			$(SRCS_DIR)/sort_small.c \
+			$(SRCS_DIR)/tools_index.c \
+			$(SRCS_DIR)/tools_sort.c \
+			$(SRCS_DIR)/parser.c \
+			$(SRCS_DIR)/r_rotate.c \
+			$(SRCS_DIR)/stack_moves.c \
+			$(SRCS_DIR)/tools_node.c \
+			$(SRCS_DIR)/tools_stack.c 
+			
 OBJS	= $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEPS	= $(OBJS:.o=.d)
 

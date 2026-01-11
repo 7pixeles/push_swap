@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 10:42:25 by ayucarre          #+#    #+#             */
-/*   Updated: 2025/12/26 20:37:55 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/11 12:01:21 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	free_split(char **split)
 {
-	int	idx;
+	int	i;
 
-	idx = 0;
+	i = 0;
 	if (!split)
 		return ;
-	while (split[idx])
+	while (split[i])
 	{
-		free(split[idx]);
-		idx++;
+		free(split[i]);
+		i++;
 	}
 	free(split);
 }
@@ -37,7 +37,6 @@ void	exit_code(t_stack *a, t_stack *b, int code)
 		|| code == STDIN_READ_ERROR)
 	{
 		write(2, "Error\n", 6);
-		write(2, "ERROR IN ARGS, PARSING OR STDIN", 32);
 	}
 	exit(code);
 }

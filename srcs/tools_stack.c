@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:10:56 by ayucarre          #+#    #+#             */
-/*   Updated: 2026/01/03 18:45:36 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/11 12:07:29 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	clear_stack(t_stack *stack)
 
 int	calc_size(t_stack *stack)
 {
-	t_node *current;
-	int size;
+	t_node	*current;
+	int		size;
 
 	if (!stack)
 		return (0);

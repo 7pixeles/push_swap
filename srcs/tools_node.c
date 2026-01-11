@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 13:33:10 by ayua              #+#    #+#             */
-/*   Updated: 2026/01/04 23:12:02 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/11 12:10:46 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ t_node	*init_node(int value)
 		return (NULL);
 	new_node->value = value;
 	new_node->index = -1;
-	new_node->pos = 0;
-	new_node->dir = 0;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
@@ -37,7 +35,7 @@ bool	calc_index(t_stack *stack)
 	current = stack->top;
 	i = 0;
 	if (stack->size < 2)
-		return false;
+		return (false);
 	tmp_array = copy_stack_to_array(stack);
 	sort_array(tmp_array, stack->size);
 	while (current)
@@ -57,19 +55,3 @@ bool	calc_index(t_stack *stack)
 	return (free(tmp_array), true);
 }
 
-void	calc_pos(t_stack *stack)
-{
-	t_node	*current;
-	int		pos;
-
-	if (!stack)
-		return ;
-	pos = 0;
-	current = stack->top;
-	while (current)
-	{
-		current->pos = pos;
-		current = current->next;
-		pos++;
-	}
-}

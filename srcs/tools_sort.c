@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:55:25 by ayua              #+#    #+#             */
-/*   Updated: 2026/01/08 18:47:39 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/11 12:08:47 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_min_pos(t_stack *stack)
 	return (min_pos);
 }
 
-int		get_max_index_pos(t_stack *stack)
+int	get_max_index_pos(t_stack *stack)
 {
 	t_node		*current;
 	int			max_index;
@@ -60,12 +60,12 @@ int		get_max_index_pos(t_stack *stack)
 	return (max_pos);
 }
 
-void push_max_to_a(t_stack *stack_a, t_stack *stack_b)
+void	push_max_to_a(t_stack *stack_a, t_stack *stack_b)
 {
 	int	dist;
 	int	max_pos;
 
-	while(stack_b->size > 0)
+	while (stack_b->size > 0)
 	{
 		max_pos = get_max_index_pos(stack_b);
 		if (max_pos <= stack_b->size / 2)
@@ -89,7 +89,7 @@ void push_max_to_a(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void push_min_to_b(t_stack *stack_a, t_stack *stack_b)
+void	push_min_to_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int	dist;
 	int	min_pos;
