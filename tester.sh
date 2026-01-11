@@ -1,10 +1,10 @@
 #!/bin/bash
 
 iterations=100
-quantity=100
+quantity=500
 range_min=-500
 range_max=500
-max_ops=700
+max_ops=5500
 
 for ((i=1; i<=iterations; i++)); do
 	ARG=$(seq ${range_min} ${range_max} | shuf -n ${quantity} | tr '\n' ' ')

@@ -6,7 +6,7 @@
 /*   By: ayua <ayua@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:55:25 by ayua              #+#    #+#             */
-/*   Updated: 2026/01/11 12:08:47 by ayua             ###   ########.fr       */
+/*   Updated: 2026/01/11 19:03:30 by ayua             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,5 @@ void	push_rotate_b(t_stack *stack_a, t_stack *stack_b, int *range)
 {
 	push(stack_a, stack_b);
 	rotate_rb(stack_b);
-	range++;
+	(*range)++;
 }
